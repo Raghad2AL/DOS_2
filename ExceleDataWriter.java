@@ -17,7 +17,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 
-public class ExceleDataReader {
+public class ExceleDataWriter {
 
     
     public static Object LookUpFromExcel(String file, double ItemNumber) throws IOException
@@ -72,7 +72,10 @@ public class ExceleDataReader {
         FileOutputStream outFile = new FileOutputStream(new File(file));
         myExcelBook.write(outFile);
         outFile.close();
-        
+        /*
+        as the database are small and only excel files, I found out the best consistency to do is to copy the changes directly 
+        to the other DB when one is edited
+        */
         String file2 = "/home/raghad-al3/Desktop/SharedFolders/Books2.xlsx";
         copyFiles(file, file2);
         
