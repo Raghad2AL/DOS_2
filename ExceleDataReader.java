@@ -58,11 +58,15 @@ public class ExceleDataReader {
         
             double amount = row.getCell(3).getNumericCellValue();
             System.out.println("amount :" + amount);
+        
+            if(amount==0) {return "Out of this book"+name;}
+        else{
             amount--;
            Cell newCell = row.getCell(3);
            newCell.setCellValue(newCell.getNumericCellValue()-1);
             System.out.println("amount :" + amount);
             String name = row.getCell(1).getStringCellValue();
+        }
 
         file1.close();
         FileOutputStream outFile = new FileOutputStream(new File(file));
